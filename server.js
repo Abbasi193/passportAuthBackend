@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 3000;
 // ensureAuthenticated
 app.get('/good', (req, res) => {
     console.log('hi')
-    console.log(req.user)
+    // console.log(req.user)
     // res.send('ok')
     // res.render('redirect',{})
     res.redirect('https://flutter-124f5.web.app/doc.html')

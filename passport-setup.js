@@ -5,13 +5,13 @@ const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const GitHubStrategy = require('passport-github2').Strategy;
 
 passport.serializeUser(function (user, done) {
-  console.log(user)
+  // console.log(user)
 
     done(null, user);
 });
 
 passport.deserializeUser(function (user, done) {
-  console.log(user)
+  // console.log(user)
     done(null, user);
 });
 
@@ -25,7 +25,7 @@ passport.use(new GoogleStrategy({
     // User.findOrCreate({ googleId: profile.id }, function (err, user) {
     //   return done(err, user);
     // });
-  console.log(accessToken)
+  // console.log(accessToken)
     done(null, accessToken)
   }
 ));
@@ -39,7 +39,7 @@ function(accessToken, refreshToken, profile, done) {
   // User.findOrCreate({ githubId: profile.id }, function (err, user) {
   //   return done(err, user);
   // });
-  console.log(profile)
+  // console.log(profile)
   done(null, profile)
 }
 ));
