@@ -48,7 +48,7 @@ app.get('/auth/github/callback',
     function (req, res) {
         console.log(req.query.code)
         // Successful authentication, redirect home.
-        res.redirect('https://flutter-124f5.web.app/doc.html');
+        res.redirect(`https://flutter-124f5.web.app/doc.html?code=${code}`);
     });
 
 app.get('/', (req, res) => {
