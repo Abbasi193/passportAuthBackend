@@ -36,7 +36,7 @@ app.get('/auth/google',
 app.get('/auth/google/callback',
     passport.authenticate('google', {
         failureRedirect: '/login', failureMessage: true,
-        successRedirect: '/good'
+        successRedirect: 'https://flutter-124f5.web.app/doc.html'
     })
 );
 
