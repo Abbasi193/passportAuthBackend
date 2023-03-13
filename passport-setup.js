@@ -18,7 +18,7 @@ passport.deserializeUser(function (user, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: process.env.URL + "/auth/google/callback",//,
+    callbackURL: ("https://easy-erin-betta-wig.cyclic.app/auth/google/callback"),//process.env.URL + "/auth/google/callback",//,
     passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {
@@ -33,8 +33,8 @@ passport.use(new GoogleStrategy({
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: process.env.URL + "/auth/github/callback",//"https://flutter-124f5.web.app/doc.html"//http://localhost:3000/auth/github/callback
-},
+  callbackURL: ("https://easy-erin-betta-wig.cyclic.app/auth/github/callback"),//"https://flutter-124f5.web.app/doc.html"//http://localhost:3000/auth/github/callback
+}, 
 function(accessToken, refreshToken, profile, done) {
   // User.findOrCreate({ githubId: profile.id }, function (err, user) {
   //   return done(err, user);
