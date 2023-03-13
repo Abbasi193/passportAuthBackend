@@ -46,6 +46,7 @@ app.get('/auth/github',
 app.get('/auth/github/callback',
     passport.authenticate('github', { failureRedirect: '/login' }),
     function (req, res) {
+        console.log(req.query.code)
         // Successful authentication, redirect home.
         res.redirect('https://flutter-124f5.web.app/doc.html');
     });
