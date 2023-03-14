@@ -10,6 +10,7 @@ passport.use(new GitHubTokenStrategy({
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
 }, (accessToken, refreshToken, profile, done) => {
     // Verification callback function
+    console.log(accessToken)
     if (!accessToken) {
       return done(null, false, { message: 'Missing token' });
   }
