@@ -19,9 +19,9 @@ const PORT = process.env.PORT || 3000;
 app.get('/good', (req, res) => {
     console.log('hi')
     // console.log(req.user)
-    // res.send('ok')
+    res.send('ok')
     // res.render('redirect',{})
-    res.redirect('https://flutter-124f5.web.app/doc.html')
+    // res.redirect('https://flutter-124f5.web.app/doc.html')
 }
 );
 
@@ -49,7 +49,7 @@ app.get('/auth/github/callback',
         let code = req.query?.code
         console.log(code)
         // Successful authentication, redirect home.
-        res.redirect(`https://flutter-124f5.web.app/doc.html?code=${code}`);
+        res.send('cb ok');
     });
 
 app.get('/', (req, res) => {
