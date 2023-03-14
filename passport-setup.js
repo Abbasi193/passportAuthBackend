@@ -14,6 +14,7 @@ passport.use(new GitHubTokenStrategy({
     if (!accessToken) {
       return done(null, false, { message: 'Missing token' });
   }
+  done(null, accessToken)
 }));
 
 passport.serializeUser(function (user, done) {

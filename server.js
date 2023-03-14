@@ -35,8 +35,12 @@ app.get('/protected',ensureAuthenticated, (req, res) => {
 }
 );
 
-app.get('/api/user', passport.authenticate('github-token'), (req, res) => {
-    res.json(req.user);
+app.get('/api/user', function(req, res) {
+    passport.authenticate('github-token', function(error, user, info) {
+        if (error) return res.serverError(error);
+        if (info) return res.unauthorized(info);
+        return res.ok(user);
+    })(req, res);
 });
 
 app.get('/auth/google',
