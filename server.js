@@ -44,11 +44,10 @@ app.get('/auth/google',
 );
 
 app.get('/auth/google/callback',
-    passport.authenticate('google', {
-        failureRedirect: '/login', failureMessage: true,
-        successRedirect: 'https://flutter-124f5.web.app/doc.html'
-    })
-);
+    passport.authenticate('google', { failureRedirect: '/login', failureMessage: true}),
+    function (req, res) {
+        res.send('cb ok');
+    });
 
 app.get('/auth/github',
     passport.authenticate('github', { scope: ['user:email'] }));
@@ -56,9 +55,6 @@ app.get('/auth/github',
 app.get('/auth/github/callback',
     passport.authenticate('github', { failureRedirect: '/login' }),
     function (req, res) {
-        let code = req.query?.code
-        console.log(code)
-        // Successful authentication, redirect home.
         res.send('cb ok');
     });
 
