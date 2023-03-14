@@ -35,6 +35,10 @@ app.get('/protected',ensureAuthenticated, (req, res) => {
 }
 );
 
+app.get('/api/user', passport.authenticate('github-token'), (req, res) => {
+    res.json(req.user);
+});
+
 app.get('/auth/google',
     passport.authenticate('google', {
         scope:

@@ -3,6 +3,17 @@ const passport = require('passport');
 require('dotenv').config();
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const GitHubStrategy = require('passport-github2').Strategy;
+const GitHubTokenStrategy = require('passport-github-token');
+
+passport.use(new GitHubTokenStrategy({
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+}, (accessToken, refreshToken, profile, done) => {
+    // Verification callback function
+    if (!accessToken) {
+      return done(null, false, { message: 'Missing token' });
+  }
+}));
 
 passport.serializeUser(function (user, done) {
   // console.log(user)
@@ -39,7 +50,7 @@ function(accessToken, refreshToken, profile, done) {
   // User.findOrCreate({ githubId: profile.id }, function (err, user) {
   //   return done(err, user);
   // });
-  // console.log(profile)
+  console.log(accessToken, refreshToken, profile)
   done(null, profile)
 }
 ));
