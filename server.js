@@ -3,6 +3,7 @@ const passport = require('passport');
 const cookieSession = require('cookie-session')
 const app = express();
 require('./passport-setup')
+app.use(express.static('public'))
 app.set("view engine", "ejs")
 
 app.use(cookieSession({
@@ -20,6 +21,15 @@ app.get('/good', (req, res) => {
     console.log('hi')
     // console.log(req.user)
     res.send('ok')
+    // res.render('redirect',{})
+    // res.redirect('https://flutter-124f5.web.app/doc.html')
+}
+);
+
+app.get('/protected',ensureAuthenticated, (req, res) => {
+    console.log('protected')
+    console.log(req?.user)
+    res.send('protected')
     // res.render('redirect',{})
     // res.redirect('https://flutter-124f5.web.app/doc.html')
 }
